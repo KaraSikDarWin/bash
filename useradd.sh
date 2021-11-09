@@ -1,33 +1,42 @@
 #!/usr/bin
-echo "sosdat usera"
-echo "Vvedite imya usera"
+echo "User Creator"
+
+echo "Enter user name"
 read name
-echo "Nuzhna li papka??"
+
+echo "Do you want create home directory? 1 - yes 2 - no"
 read otvp
-echo "Sosdat gruppu s takim zhe imenem??"
+
+echo "Do you want create group with same user name? 1 - yes 2 - no"
 read otvg
+
 if [ $otvp == "1" ]
 then
+
 if [ $otvg == "1" ]
 then sudo useradd $name -m -N
-
-
 else sudo useradd $name -m
 fi
+
 else sudo useradd $name
 fi
-#echo "Menyaem parol srazu"
-#read otvpar
-#if [ otcpar == "1" ]
-#then sudo passwd #user
-#sudo passwd -e $name
-#fi
-echo "do kakogo dnya validen "
+
+echo "Until what date will the password be valid? Exemple: YYYY-MM-DD"
 read g m d
 sudo usermod $name -e $g-$m-$d
-echo "chrez skolko menyat parol"
+
+echo "How many days do need to change password? "
 read a
 sudo chage -M $a $name
-echo "Cherez skolko kidat warn"
+
+echo "Warn time?"
 read b 
 sudo chage -W $b $name
+
+echo "Do you wnt changing password yet?? 1 - yes 2 - no"
+read pasotv
+if [ pasotv == "1" ]
+then sudo passwd -e $name
+fi
+
+#P.S Vi lutchiy redactor i love vi
