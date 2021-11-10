@@ -1,8 +1,12 @@
 #!/usr/bin
+num=0
+while [ $num -lt 1  ]
+do
 s=0
 a=0
 b=0
 g=0
+ban=0
 echo "Print your login"
 read login
 echo "Print your password"
@@ -13,6 +17,9 @@ do
 let "s= $s + 1"
 if [ $var == $login ]
 then a=$s
+#echo $a
+else let "s= 0"
+#echo $s
 fi
 done
 stir1=$(cut -d " " -f 2 password.txt)
@@ -21,11 +28,23 @@ do
 let "g= $g + 1"
 if [ $var1 == $pssword ]
 then b=$g
+#echo $b
+else let "g= 0"
+#echo $g
 fi
 done
-if [ $b == $a ]
-then echo "Vhod vipolnen"
+let "ban= $a + $b"
 
+
+if [ $ban == 0 ]
+then echo "canxeled"
+#let "a= $a + 1"
+#let "b= $b + 2"
+
+
+else if [ $b == $a ]
+then echo "Succeed"
+let "num= $num + 2"
 echo "Welcome, $USER"
 echo "Choose option"
 echo "1] USERADD"
@@ -84,12 +103,16 @@ fi
 
 
 fi
-
-
-
-
-
-else echo "Vhoda neyt"
 fi
 
+
+
+
+#else
+#if [ let "s= s + g" == 0 ]
+#then 	
+#echo "Vhoda neyt"
+fi
+#fi
+done
 
