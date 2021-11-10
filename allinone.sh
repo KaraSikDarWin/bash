@@ -45,9 +45,21 @@ then echo "canxeled"
 else if [ $b == $a ]
 then echo "Succeed"
 let "num= $num + 2"
-echo "Welcome, $USER"
+echo " Welcome, $USER >
+ ----------
+ \     /\  ___  /\
+  \   // \/   \/ \\
+     ((    O O    ))
+      \\ /     \ //
+       \/  | |  \/ 
+        |  | |  |  
+        |  | |  |  
+        |   o   |  
+        | |   | |  
+        |m|   |m|"
 echo "Choose option"
 echo "1] USERADD"
+echo "2] DATE"
 read option
 if [ $option == "1" ]
 then
@@ -100,14 +112,18 @@ fi
 
 
 
-
+elif [ $option == "2" ]
+then echo "Date"
+date1=0
+echo "Enter days count"
+read f
+date1=$(($f * 86400))
+echo $date1
+moddate=$( date -d @$date1)
+echo "Result: $moddate"
+fi
 
 fi
-fi
-
-
-
-
 #else
 #if [ let "s= s + g" == 0 ]
 #then 	
